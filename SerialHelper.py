@@ -66,7 +66,7 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         # 调用绘图
         self.timer1 = pg.QtCore.QTimer()
         self.timer1.timeout.connect(self.plot_data)  # 定时调用plotData函数
-        self.timer1.start(50)  # 多少ms调用一次
+        self.timer1.start(10)  # 多少ms调用一次
 
     # 串口检测
     def port_check(self):
@@ -167,9 +167,10 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
             return None
         if num > 0:
             data = self.ser.read(num)
-
-            self.dat = float(self.ser.readline())
-
+            try:
+                self.dat = float(self.ser.readline())
+            except ValueError:
+                pass
             num = len(data)
             # hex显示
             if self.hex_receive.checkState():
