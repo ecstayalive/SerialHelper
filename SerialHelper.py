@@ -15,6 +15,7 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
     def __init__(self):
         super(Pyqt5_Serial, self).__init__()
         self.setupUi(self)
+        self.open = False
         self.init()
         self.setWindowTitle("串口助手")
         self.ser = serial.Serial()
@@ -32,10 +33,16 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         self.historyLength = 200
         self.data = np.zeros(self.historyLength).__array__('d')
         self.count = 0
+        
 
     def init(self):
         # 串口检测按钮
+        if not self.open:
+            self.timer2 = QTimer()
+            self.timer2.timeout.connect(self.port_check)
+            self.timer2.start(50)
         self.s1__box_1.clicked.connect(self.port_check)
+
 
         # 串口信息显示
         self.s1__box_2.currentTextChanged.connect(self.port_imf)
@@ -66,7 +73,7 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         # 调用绘图
         self.timer1 = pg.QtCore.QTimer()
         self.timer1.timeout.connect(self.plot_data)  # 定时调用plotData函数
-        self.timer1.start(10)  # 多少ms调用一次
+        self.timer1.start(25)  # 多少ms调用一次
 
     # 串口检测
     def port_check(self):
@@ -98,6 +105,7 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
 
         try:
             self.ser.open()
+            self.isportopen = True
         except:
             QMessageBox.critical(self, "Port Error", "此串口不能被打开！")
             return None
