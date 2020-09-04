@@ -16,14 +16,14 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         super(Pyqt5_Serial, self).__init__()
         self.setupUi(self)
         self.open = False
-        self.init()
         self.setWindowTitle("串口助手")
         self.ser = serial.Serial()
         self.port_check()
-
-        # 设置绘图窗口
-        self.p1, self.curve = self.set_graph_ui()
-
+        # plot_data
+        self.data = []
+        self.x = []
+        self.tempx = []
+        self.count = 0
         # 接收数据和发送数据数目置零
         self.data_num_received = 0
         self.lineEdit.setText(str(self.data_num_received))
@@ -31,9 +31,11 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         self.lineEdit_2.setText(str(self.data_num_sended))
         self.idx = 0
         self.historyLength = 200
-        self.data = np.zeros(self.historyLength).__array__('d')
-        self.count = 0
-        
+        # initialize functions
+        self.init()
+        # 设置绘图窗口
+        self.p1, self.curve = self.set_graph_ui()
+
 
     def init(self):
         # 串口检测按钮
@@ -42,7 +44,6 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
             self.timer2.timeout.connect(self.port_check)
             self.timer2.start(50)
         self.s1__box_1.clicked.connect(self.port_check)
-
 
         # 串口信息显示
         self.s1__box_2.currentTextChanged.connect(self.port_imf)
@@ -87,6 +88,7 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         if len(self.Com_Dict) == 0:
             # self.state_label.setText(" 无串口")
             pass
+
     # 串口信息
     def port_imf(self):
         # 显示选定的串口的详细信息
@@ -219,37 +221,44 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
 
         pg.setConfigOptions(antialias=True)  # pg全局变量设置函数，antialias=True开启曲线抗锯齿
 
+        pg.setConfigOption('background', 'w')  # 背景设置为白色
+        pg.setConfigOption('foreground', 'k')
+
         win = pg.GraphicsLayoutWidget()  # 创建pg layout，可实现数据界面布局自动管理
 
         # pg绘图窗口可以作为一个widget添加到GUI中的graph_layout，当然也可以添加到Qt其他所有的容器中
         self.PyqtgraphWorkspace.addWidget(win)
 
         p1 = win.addPlot()  # 添加第一个绘图窗口
-        p1.setLabel('left', text='voltage', color='#ffffff')  # y轴设置函数
-        p1.showGrid(x=True, y=True)  # 栅格设置函数
+        p1.setLabel('left', text='voltage', color='#000000')  # y轴设置函数
+        # p1.showGrid(x=True, y=True)  # 栅格设置函数
         p1.setLogMode(x=False, y=False)  # False代表线性坐标轴，True代表对数坐标轴
-        p1.setLabel('bottom', text='time', units='s')  # x轴设置函数
+        p1.setLabel('bottom', text='time', color='#000000', units='s')  # x轴设置函数
         p1.showGrid(x=True, y=True)  # 把X和Y的表格打开
+        p1.setRange(xRange=[0,  self.historyLength])
         # p1.setRange(xRange=[0, 100], yRange=[-1.2, 1.2], padding=0)
         # p1.setLabel(axis='left', text='y / V')  # 靠左
         # p1.setLabel(axis='bottom', text='x / point')
         # p1.setTitle('printing')  # 表格的名字
-        self.curve = p1.plot()
+        self.curve = p1.plot(x=self.x, y=self.data, pen='r', name='values')
         return p1, self.curve
 
     def plot_data(self):
         # 内部作用域想改变外部域变量
+        if self.count < self.historyLength:
+            self.count += 1
         try:
             if self.count < self.historyLength:
-                self.data[self.count] = self.dat
-                self.count += 1
+                self.tempx.append(self.historyLength - self.count)
+                self.data.append(self.dat)
+                self.x = self.tempx[::-1]
             else:
                 self.data[:-1] = self.data[1:]
-                self.data[self.count - 1] = self.dat
+                self.data[self.count - 2] = self.dat
         except AttributeError or TypeError:
             pass
+        self.curve.setData(x=self.x, y=self.data)
         self.curve.setData(self.data)
-        self.idx += 1
 
     # 清除显示
 
