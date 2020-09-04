@@ -219,13 +219,6 @@ p, li { white-space: pre-wrap; }
         </item>
        </widget>
       </item>
-      <item row="7" column="0">
-       <widget class="QPushButton" name="close_button">
-        <property name="text">
-         <string>关闭串口</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="0">
        <widget class="QLabel" name="s1__lb_3">
         <property name="text">
@@ -260,7 +253,37 @@ p, li { white-space: pre-wrap; }
       <item row="1" column="1">
        <widget class="QComboBox" name="s1__box_2"/>
       </item>
-      <item row="8" column="0">
+      <item row="5" column="1">
+       <widget class="QComboBox" name="s1__box_6">
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="s1__lb_1">
+        <property name="text">
+         <string>串口检测：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" colspan="2">
+       <widget class="QPushButton" name="open_button">
+        <property name="text">
+         <string>打开串口</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" colspan="2">
+       <widget class="QPushButton" name="close_button">
+        <property name="text">
+         <string>关闭串口</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0" colspan="2">
        <widget class="QGroupBox" name="formGroupBox">
         <property name="title">
          <string>串口状态</string>
@@ -305,29 +328,6 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
         </layout>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QComboBox" name="s1__box_6">
-        <item>
-         <property name="text">
-          <string>1</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="s1__lb_1">
-        <property name="text">
-         <string>串口检测：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QPushButton" name="open_button">
-        <property name="text">
-         <string>打开串口</string>
-        </property>
        </widget>
       </item>
      </layout>

@@ -85,15 +85,16 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
             self.Com_Dict["%s" % port[0]] = "%s" % port[1]
             self.s1__box_2.addItem(port[0])
         if len(self.Com_Dict) == 0:
-            self.state_label.setText(" 无串口")
-
+            # self.state_label.setText(" 无串口")
+            pass
     # 串口信息
     def port_imf(self):
         # 显示选定的串口的详细信息
         imf_s = self.s1__box_2.currentText()
         if imf_s != "":
-            self.state_label.setText(
-                self.Com_Dict[self.s1__box_2.currentText()])
+            pass
+            # self.state_label.setText(
+            #     self.Com_Dict[self.s1__box_2.currentText()])
 
     # 打开串口
     def port_open(self):
