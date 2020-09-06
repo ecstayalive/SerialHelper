@@ -1,4 +1,9 @@
-# coding=utf-8
+'''
+@author Bruce Hou
+@date 2019/01/15
+@update 2020/09/06
+@detail
+'''
 import sys
 import serial
 import serial.tools.list_ports
@@ -7,7 +12,6 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QTimer
 from SerialHelper_gui import Ui_Form
 import pyqtgraph as pg
-import array
 
 
 class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
@@ -17,8 +21,6 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         self.open = False
         self.setWindowTitle("串口助手")
         self.ser = serial.Serial()
-        # self.port_check()
-        # plot_data
         self.data = []
         self.x = []
         self.tempx = []
@@ -225,6 +227,8 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         self.PyqtgraphWorkspace.addWidget(win)
 
         p1 = win.addPlot()  # 添加第一个绘图窗口
+        # 设置图例
+        p1.addLegend()
         p1.setLabel('left', text='voltage', color='#000000')  # y轴设置函数
         # p1.showGrid(x=True, y=True)  # 栅格设置函数
         p1.setLogMode(x=False, y=False)  # False代表线性坐标轴，True代表对数坐标轴
@@ -234,7 +238,8 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         # p1.setRange(xRange=[0, 100], yRange=[-1.2, 1.2], padding=0)
         # p1.setLabel(axis='left', text='y / V')  # 靠左
         # p1.setLabel(axis='bottom', text='x / point')
-        # p1.setTitle('printing')  # 表格的名字
+        p1.setTitle('printing')  # 表格的名字
+        # self.curve = p1.plot(x=self.x, y=self.data, pen='r', name='values', symbolBrush=(255,0,0))
         self.curve = p1.plot(x=self.x, y=self.data, pen='r', name='values')
         return p1, self.curve
 
