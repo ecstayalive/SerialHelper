@@ -2,7 +2,6 @@
 import sys
 import serial
 import serial.tools.list_ports
-import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QTimer
@@ -18,7 +17,7 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         self.open = False
         self.setWindowTitle("串口助手")
         self.ser = serial.Serial()
-        self.port_check()
+        # self.port_check()
         # plot_data
         self.data = []
         self.x = []
@@ -35,7 +34,6 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         self.init()
         # 设置绘图窗口
         self.p1, self.curve = self.set_graph_ui()
-
 
     def init(self):
         # 串口检测按钮
@@ -74,7 +72,7 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         # 调用绘图
         self.timer1 = pg.QtCore.QTimer()
         self.timer1.timeout.connect(self.plot_data)  # 定时调用plotData函数
-        self.timer1.start(25)  # 多少ms调用一次
+        self.timer1.start(10)  # 多少ms调用一次
 
     # 串口检测
     def port_check(self):
@@ -86,7 +84,6 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
             self.Com_Dict["%s" % port[0]] = "%s" % port[1]
             self.s1__box_2.addItem(port[0])
         if len(self.Com_Dict) == 0:
-            # self.state_label.setText(" 无串口")
             pass
 
     # 串口信息
@@ -95,8 +92,6 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         imf_s = self.s1__box_2.currentText()
         if imf_s != "":
             pass
-            # self.state_label.setText(
-            #     self.Com_Dict[self.s1__box_2.currentText()])
 
     # 打开串口
     def port_open(self):
@@ -235,7 +230,7 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         p1.setLogMode(x=False, y=False)  # False代表线性坐标轴，True代表对数坐标轴
         p1.setLabel('bottom', text='time', color='#000000', units='s')  # x轴设置函数
         p1.showGrid(x=True, y=True)  # 把X和Y的表格打开
-        p1.setRange(xRange=[0,  self.historyLength])
+        p1.setRange(xRange=[0, self.historyLength])
         # p1.setRange(xRange=[0, 100], yRange=[-1.2, 1.2], padding=0)
         # p1.setLabel(axis='left', text='y / V')  # 靠左
         # p1.setLabel(axis='bottom', text='x / point')
@@ -245,20 +240,18 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
 
     def plot_data(self):
         # 内部作用域想改变外部域变量
-        if self.count < self.historyLength:
-            self.count += 1
         try:
             if self.count < self.historyLength:
-                self.tempx.append(self.historyLength - self.count)
                 self.data.append(self.dat)
+                self.tempx.append(self.historyLength - self.count)
                 self.x = self.tempx[::-1]
+                self.count += 1
             else:
                 self.data[:-1] = self.data[1:]
-                self.data[self.count - 2] = self.dat
+                self.data[self.count - 1] = self.dat
         except AttributeError or TypeError:
             pass
         self.curve.setData(x=self.x, y=self.data)
-        self.curve.setData(self.data)
 
     # 清除显示
 

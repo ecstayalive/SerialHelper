@@ -1,14 +1,16 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'SerialHelper_gui.ui'
-#
-# Created by: PyQt5 UI code generator 5.9.2
-#
-# WARNING! All changes made in this file will be lost!
+'''
+@author PyQt5 UI code generator 5.9.2
+@detail Form implementation generated from reading ui file 'SerialHelper_gui.ui'
+'''
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_Form(object):
+    '''
+    @desc Create UI interface
+    '''
+
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1055, 635)
@@ -43,7 +45,7 @@ class Ui_Form(object):
         self.timer_send_cb.setObjectName("timer_send_cb")
         self.gridLayout_3.addWidget(self.timer_send_cb, 3, 2, 1, 1)
         self.lineEdit_3 = QtWidgets.QLineEdit(self.verticalGroupBox)
-        self.lineEdit_3.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.lineEdit_3.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.gridLayout_3.addWidget(self.lineEdit_3, 3, 3, 1, 1)
         self.dw = QtWidgets.QLabel(self.verticalGroupBox)
@@ -148,11 +150,12 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.verticalGroupBox.setTitle(_translate("Form", "接受区"))
         self.hex_receive.setText(_translate("Form", "Hex接收"))
-        self.s3__send_text.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'SimSun\'; font-size:9pt;\">123456</span></p></body></html>"))
+        self.s3__send_text.setHtml(_translate("Form",
+                                              "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                              "p, li { white-space: pre-wrap; }\n"
+                                              "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+                                              "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'SimSun\'; font-size:9pt;\">123456</span></p></body></html>"))
         self.hex_send.setText(_translate("Form", "Hex发送"))
         self.s2__clear_button.setText(_translate("Form", "清除"))
         self.s3__send_button.setText(_translate("Form", "发送"))
@@ -191,4 +194,3 @@ class Ui_Form(object):
         self.formGroupBox1.setTitle(_translate("Form", "串口状态"))
         self.label.setText(_translate("Form", "已接收："))
         self.label_2.setText(_translate("Form", "已发送："))
-
