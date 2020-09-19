@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QGroupBox" name="verticalGroupBox">
      <property name="title">
-      <string>接受区</string>
+      <string>Acceptance zone</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0" rowspan="4">
@@ -26,7 +26,7 @@
       <item row="0" column="1">
        <widget class="QCheckBox" name="hex_receive">
         <property name="text">
-         <string>Hex接收</string>
+         <string>Hex</string>
         </property>
        </widget>
       </item>
@@ -44,35 +44,35 @@ p, li { white-space: pre-wrap; }
       <item row="0" column="5">
        <widget class="QCheckBox" name="hex_send">
         <property name="text">
-         <string>Hex发送</string>
+         <string>Hex</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
        <widget class="QPushButton" name="s2__clear_button">
         <property name="text">
-         <string>清除</string>
+         <string>clear</string>
         </property>
        </widget>
       </item>
       <item row="1" column="5">
        <widget class="QPushButton" name="s3__send_button">
         <property name="text">
-         <string>发送</string>
+         <string>send</string>
         </property>
        </widget>
       </item>
       <item row="2" column="5">
        <widget class="QPushButton" name="s3__clear_button">
         <property name="text">
-         <string>清除</string>
+         <string>clear</string>
         </property>
        </widget>
       </item>
       <item row="3" column="2">
        <widget class="QCheckBox" name="timer_send_cb">
         <property name="text">
-         <string>定时发送</string>
+         <string>Timed sending</string>
         </property>
        </widget>
       </item>
@@ -89,7 +89,7 @@ p, li { white-space: pre-wrap; }
       <item row="3" column="4" colspan="2">
        <widget class="QLabel" name="dw">
         <property name="text">
-         <string>ms/次</string>
+         <string>ms / next</string>
         </property>
        </widget>
       </item>
@@ -102,20 +102,20 @@ p, li { white-space: pre-wrap; }
    <item row="0" column="0">
     <widget class="QGroupBox" name="formGroupBox">
      <property name="title">
-      <string>串口设置</string>
+      <string>Serial port settings</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="4" column="0">
        <widget class="QLabel" name="s1__lb_5">
         <property name="text">
-         <string>校验位：</string>
+         <string>Check Digit:</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QPushButton" name="s1__box_1">
         <property name="text">
-         <string>检测串口</string>
+         <string>Detect Serial</string>
         </property>
         <property name="autoRepeatInterval">
          <number>100</number>
@@ -128,21 +128,21 @@ p, li { white-space: pre-wrap; }
       <item row="3" column="0">
        <widget class="QLabel" name="s1__lb_4">
         <property name="text">
-         <string>数据位：</string>
+         <string>Data bits:</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="s1__lb_2">
         <property name="text">
-         <string>串口选择：</string>
+         <string>Serial selection:</string>
         </property>
        </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="s1__lb_6">
         <property name="text">
-         <string>停止位：</string>
+         <string>Stop bit:</string>
         </property>
        </widget>
       </item>
@@ -222,7 +222,7 @@ p, li { white-space: pre-wrap; }
       <item row="2" column="0">
        <widget class="QLabel" name="s1__lb_3">
         <property name="text">
-         <string>波特率：</string>
+         <string>Baud rate:</string>
         </property>
        </widget>
       </item>
@@ -265,28 +265,28 @@ p, li { white-space: pre-wrap; }
       <item row="0" column="0">
        <widget class="QLabel" name="s1__lb_1">
         <property name="text">
-         <string>串口检测：</string>
+         <string>Serial detection:</string>
         </property>
        </widget>
       </item>
       <item row="6" column="0" colspan="2">
        <widget class="QPushButton" name="open_button">
         <property name="text">
-         <string>打开串口</string>
+         <string>Open Serial</string>
         </property>
        </widget>
       </item>
       <item row="7" column="0" colspan="2">
        <widget class="QPushButton" name="close_button">
         <property name="text">
-         <string>关闭串口</string>
+         <string>Close Serial</string>
         </property>
        </widget>
       </item>
       <item row="8" column="0" colspan="2">
        <widget class="QGroupBox" name="formGroupBox">
         <property name="title">
-         <string>串口状态</string>
+         <string>Serial port status</string>
         </property>
         <layout class="QFormLayout" name="formLayout_2">
          <property name="horizontalSpacing">
@@ -310,7 +310,7 @@ p, li { white-space: pre-wrap; }
          <item row="0" column="0">
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>已接收：</string>
+            <string>Received:</string>
            </property>
           </widget>
          </item>
@@ -323,7 +323,7 @@ p, li { white-space: pre-wrap; }
          <item row="1" column="0">
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>已发送：</string>
+            <string>Sent:</string>
            </property>
           </widget>
          </item>
