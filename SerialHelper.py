@@ -148,6 +148,7 @@ class Pyqt5_Serial(QtWidgets.QWidget, Ui_Form):
         self.formGroupBox1.setTitle("Serial port status (closed)")
         # delete the variable
         del self.dat
+        # self.dat = 0
         gc.collect()
         if self.flag == 1:
             self.flag = 0

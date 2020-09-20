@@ -7,9 +7,11 @@
 - This project is based on another project,but it i forget where i see,so someday if you see this, contact me.
 
 ## Usage
-python SerialHelper.py
+python SerialHelper.py 
 
-## what it can do
+Or Download the software
+
+## what can it do
 
 ### Detect Serial Port Automatically
 ![Detect Serial](./picture/detect.gif)
