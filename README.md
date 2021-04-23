@@ -27,6 +27,3 @@ Or Download the software
 
 ### Real-time Drawing
 ![Drawing](./picture/plot.gif)
-
-## License
-MIT License
